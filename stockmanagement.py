@@ -1,21 +1,38 @@
 import sys
-import json
+import csv
+
+FILE_NAME = "stock_data.csv"
 
 stock = {}
 
 def load_stock():
     global stock
     try:
-        with open("stock_data.json", "r") as file:
-            stock = json.load(file)
+        with open(FILE_NAME, "r", newline='') as file:
+            reader = csv.DictReader(file)
+            for row in reader:
+                stock[row["product_id"]] = {
+                    "name": row["name"],
+                    "quantity": int(row["quantity"]),
+                    "price": float(row["price"]),
+                }
     except FileNotFoundError:
-        # If the file doesn't exist, just continue with an empty stock
+        # If the file doesn't exist, continue with an empty stock
         pass
 
 # Save stock data to a file
 def save_stock():
-    with open("stock_data.json", "w") as file:
-        json.dump(stock, file, indent=4)
+    with open(FILE_NAME, "w", newline='') as file:
+        fieldnames = ["product_id", "name", "quantity", "price"]
+        writer = csv.DictWriter(file, fieldnames=fieldnames)
+        writer.writeheader()
+        for product_id, details in stock.items():
+            writer.writerow({
+                "product_id": product_id,
+                "name": details["name"],
+                "quantity": details["quantity"],
+                "price": details["price"],
+            })
 
 # Function to add a new product
 def add_product():
@@ -43,6 +60,9 @@ def main():
         print("\t\t\t\t\t[3] View all Product \t\t\t [4] Search Product")
         print("\t\t\t\t\t[5] Exit")
         choice = input("\t\t\t\t\tEnter your Choice: ").strip()
+        
+        if choice == "1":
+            add_product()
 
         
         
