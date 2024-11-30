@@ -94,6 +94,19 @@ def view_stock():
     for product_id, details in stock.items():
         print(f"{product_id:<10}{details['name']:<20}{details['quantity']:<10}{details['price']:<10.2f}")
     print("-------------------------------------------------")
+    
+    # Function to search for a product
+def search_product():
+    product_id = input("Enter Product ID to search: ").strip()
+    if product_id not in stock:
+        print("Product ID not found.")
+        return
+    details = stock[product_id]
+    print("\n--- Product Details ---")
+    print(f"Name: {details['name']}")
+    print(f"Quantity: {details['quantity']}")
+    print(f"Price: {details['price']:.2f}")
+    print("-----------------------")
 
 def main():
     while True:
@@ -106,6 +119,17 @@ def main():
         
         if choice == "1":
             add_product()
+        elif choice == "2":
+            update_stock()
+        elif choice == "3":
+            view_stock()
+        elif choice == "4":
+            search_product()
+        elif choice == "5":
+            print("Exiting Stock Management System. Goodbye!")
+            sys.exit()
+        else:
+            print("Invalid choice. Please try again.")
 
         
         
