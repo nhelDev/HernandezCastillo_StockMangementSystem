@@ -1,6 +1,42 @@
-product_id,name,quantity,price
-1,AquaGlow,58,120.0
-2,AloeVera,38,99.0
-3,Perfume,18,129.0
-4,Dove,20,150.0
-5,Shampoo,12,200.0
+product_id,name,quantity,price,category
+1,Cetaphil Gentle Skin Cleanser 500ml,30,760.0,Cleanser
+2,Luxe Organix Whitening Repair Cleanser 150ml,30,289.0,Cleanser
+3,Pond's Brightening Micellar Water 100ml,30,200.0,Cleanser
+4,Simple Kind to Skin Moisturizing Facial Wash 150ml,30,299.0,Cleanser
+5,Celeteque Hydration Gentle Exfoliating Facial Wash 100ml,30,250.0,Cleanser
+6,Fresh Skinlab Jeju Aloe Ice Foam Cleanser 120ml,30,199.0,Cleanser
+7,Nivea MicellAir Skin Breathe Micellar Water 125ml,30,199.0,Cleanser
+8,Eskinol Deep Cleanser Calamansi 225ml,30,90.0,Cleanser
+9,St. Ives Gentle Smoothing Oatmeal Cleanser 170ml,30,250.0,Cleanser
+10,Watsons Gentle Facial Cleansing Foam 100ml,30,200.0,Cleanser
+11,Luxe Organix Miracle Repair Niacinamide Serum 30ml,30,499.0,Serum
+12,The Ordinary Niacinamide 10% + Zinc 1% Serum 30ml,30,640.0,Serum
+13,Garnier Light Complete Vitamin C Serum 30ml,30,549.0,Serum
+14,Olay Regenerist Retinol24 Night Serum 30ml,30,1499.0,Serum
+15,Pond's Age Miracle Double Action Serum 30ml,30,699.0,Serum
+16,Celeteque Advanced Anti-Aging Serum 30ml,30,649.0,Serum
+17,Fresh Jeju Aloe Ice Aloe Vera Face Serum 50ml,30,299.0,Serum
+18,Eskinol Naturals Micellar Facial Serum Glow with Papaya 50ml,30,299.0,Serum
+19,Watsons Collagen Hydrating Serum 50ml,30,250.0,Serum
+20,Dr. Sensitive Vitamin C Serum 20ml,30,299.0,Serum
+21,Belo SunExpert Face Sunscreen SPF50 50ml,30,375.0,Sunscreen
+22,Luxe Organix Aqua Sunscreen SPF50 PA+++ 50ml,30,349.0,Sunscreen
+23,Biore UV Aqua Rich Watery Essence SPF50+ PA++++ 50ml,30,450.0,Sunscreen
+24,Nivea Sun Protect & Moisture Lotion SPF50 100ml,30,499.0,Sunscreen
+25,Watsons Water Drop Sun Cream SPF50 PA+++ 40ml,30,399.0,Sunscreen
+26,Cetaphil Sun SPF50 Light Gel 50ml,30,885.0,Sunscreen
+27,Pond's Bright Sunscreen SPF50 PA+++ 30g,30,349.0,Sunscreen
+28,SkinWhite Advanced PowerWhitening Sunscreen SPF50 50ml,30,249.0,Sunscreen
+29,Erythros Dry Touch Sunscreen SPF50+ 50ml,30,899.0,Sunscreen
+30,Fresh Skinlab Tomato Glass Skin SPF50 Gel Lotion 100ml,30,399.0,Sunscreen
+31,Pond's Super Light Gel Moisturizer 147g,30,329.0,Moisturizer
+32,Celeteque Hydration Facial Moisturizer 50ml,30,150.0,Moisturizer
+33,Nivea Soft Moisturizing Cream 100ml,30,199.0,Moisturizer
+34,Luxe Organix Aloe Vera Soothing Gel 300ml,30,199.0,Moisturizer
+35,Cetaphil Daily Advance Ultra Hydrating Lotion 85g,30,650.0,Moisturizer
+36,Olay Natural White Cream Moisturizer 50g,30,169.0,Moisturizer
+37,Neutrogena Hydro Boost Water Gel 50g,30,850.0,Moisturizer
+38,Fresh Skinlab Watermelon Soothing Gel Lotion 300ml,30,199.0,Moisturizer
+39,Simple Hydrating Light Moisturizer 125ml,30,349.0,Moisturizer
+40,Watsons Collagen Moisturizing Gel 100ml,30,249.0,Moisturizer
+41,Garnier Serum,20,399.0,Serum
