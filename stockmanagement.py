@@ -52,6 +52,49 @@ def add_product():
     print(f"\nProduct '{name}' added successfully.")
     save_stock()  # Save the updated stock to the file
 
+# Function to update stock quantity (restock or sell)
+def update_stock():
+    product_id = input("Enter Product ID: ").strip()
+    if product_id not in stock:
+        print("Product ID not found.")
+        return
+
+    print("\n--- Update Stock ---")
+    print("1. Add stock")
+    print("2. Reduce stock")
+    choice = input("Enter your choice: ").strip()
+
+    try:
+        change = int(input("Enter quantity change: "))
+    except ValueError:
+        print("Invalid input. Quantity change should be an integer.")
+        return
+
+    if choice == "1":
+        stock[product_id]["quantity"] += change
+        print(f"Added {change} to '{stock[product_id]['name']}' stock. Current quantity: {stock[product_id]['quantity']}")
+    elif choice == "2":
+        # Ensure we are not reducing below zero stock
+        if stock[product_id]["quantity"] - change < 0:
+            print("Error: Insufficient stock to reduce.")
+            return
+        stock[product_id]["quantity"] -= change
+        print(f"Reduced {change} from '{stock[product_id]['name']}' stock. Current quantity: {stock[product_id]['quantity']}")
+    else:
+        print("Invalid choice. Please try again.")
+    save_stock()  # Save the updated stock to the file
+
+# Function to view all stock
+def view_stock():
+    if not stock:
+        print("\nNo products in stock.")
+        return
+    print("\n----------------- Current Stock -----------------")
+    print(f"{'ID':<10}{'Name':<20}{'Quantity':<10}{'Price':<10}")
+    for product_id, details in stock.items():
+        print(f"{product_id:<10}{details['name']:<20}{details['quantity']:<10}{details['price']:<10.2f}")
+    print("-------------------------------------------------")
+
 def main():
     while True:
         print("\n\t\t\t\t\t\t\t--- Stock Management System ---")
