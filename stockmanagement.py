@@ -109,6 +109,7 @@ def search_product():
     print("-----------------------")
 
 def main():
+    load_stock()
     while True:
         print("\n\t\t\t\t\t\t\t--- Stock Management System ---")
         print("\n\t\t\t\t\t\t\t\t---- WATSON ----")
