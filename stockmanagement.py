@@ -1,4 +1,4 @@
 import sys
 import json
 
-#print("hello")
+print("hello")
