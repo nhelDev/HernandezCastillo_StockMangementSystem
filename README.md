@@ -1,7 +1,9 @@
                                                         STOCK MANAGEMENT SYSTEM 
                                                                 Watson
 
-                                A STOCK MANAGEMENT SYSTEM IS A SYSTEM THAT IS USED TO MONITOR, CONTROL, AND ORGANIZE THE INVENTORY OR STOCK LEVELS OF A BUSINESS. IT ENSURES THAT THERES IS A BALANCE BETWEEN THE STOCKS AVAILABLE AND THE BUSINESS OPERATIONAL NEEDS, REDUCING OVERSTOCKING, UNDERSTOCKING, AND WASTAGE. 
+VIDEO DEMO URL:
+DESCRIPTION:
+A STOCK MANAGEMENT SYSTEM IS A SYSTEM THAT IS USED TO MONITOR, CONTROL, AND ORGANIZE THE INVENTORY OR STOCK LEVELS OF A BUSINESS. IT ENSURES THAT THERES IS A BALANCE BETWEEN THE STOCKS AVAILABLE AND THE BUSINESS OPERATIONAL NEEDS, REDUCING OVERSTOCKING, UNDERSTOCKING, AND WASTAGE. 
 
 load_stock() : load existing stock data from the stock_data.csv file intoo the progra when it starts. it reads the details such as the product ID, name, quantity, price, and catagory. this key features ensures the system starts with the latest saved data.
 
