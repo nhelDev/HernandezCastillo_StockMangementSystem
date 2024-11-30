@@ -15,15 +15,17 @@ def load_stock():
                     "name": row["name"],
                     "quantity": int(row["quantity"]),
                     "price": float(row["price"]),
+                    "category": row.get("category", "Unknown"),  # Default to 'Unknown' if missing
                 }
     except FileNotFoundError:
         # If the file doesn't exist, continue with an empty stock
         pass
 
+
 # Save stock data to a file
 def save_stock():
     with open(FILE_NAME, "w", newline='') as file:
-        fieldnames = ["product_id", "name", "quantity", "price"]
+        fieldnames = ["product_id", "name", "quantity", "price", "category"]
         writer = csv.DictWriter(file, fieldnames=fieldnames)
         writer.writeheader()
         for product_id, details in stock.items():
@@ -32,6 +34,7 @@ def save_stock():
                 "name": details["name"],
                 "quantity": details["quantity"],
                 "price": details["price"],
+                "category": details["category"],
             })
 
 # Function to add a new product
@@ -48,8 +51,26 @@ def add_product():
         print("Invalid input. Quantity should be an integer and price should be a number.")
         return
 
-    stock[product_id] = {"name": name, "quantity": quantity, "price": price}
-    print(f"\nProduct '{name}' added successfully.")
+    print("\nSelect Category:")
+    print("1. Cleanser")
+    print("2. Moisturizer")
+    print("3. Serum")
+    print("4. Sunscreen")
+    category_choice = input("Enter your choice: ").strip()
+
+    categories = {
+        "1": "Cleanser",
+        "2": "Moisturizer",
+        "3": "Serum",
+        "4": "Sunscreen"
+    }
+    category = categories.get(category_choice, None)
+    if not category:
+        print("Invalid category choice. Product not added.")
+        return
+
+    stock[product_id] = {"name": name, "quantity": quantity, "price": price, "category": category}
+    print(f"\nProduct '{name}' added successfully under category '{category}'.")
     save_stock()  # Save the updated stock to the file
 
 # Function to update stock quantity (restock or sell)
@@ -91,12 +112,47 @@ def view_stock():
     if not stock:
         print("\nNo products in stock.")
         return
-    print("\n\t\t\t\t\t-------------------------- Current Stock -----------------------\n")
-    print(f"{'\t\t\t\t\t ID':<10}{'\t\tName':<20}{'\tQuantity':<10}{'\tPrice':<10}")
-    for product_id, details in stock.items():
-        print(f"\t\t\t\t\t {product_id:<10}\t{details['name']:<20}\t {details['quantity']:<10}\t{details['price']:<10.2f}")
-    print("\t\t\t\t\t---------------------------------------------------------------")
     
+    print("\n\t\t\t\t\t-------------------------- View Stocks Option -----------------------------\n")
+    print("[1] View All Products")
+    print("[2] View by Category")
+    print("\t\t\t\t\t---------------------------------------------------------------\n")
+
+    choice = input("Enter your choice: ").strip()
+    
+    if choice == "1":
+        print("\n\t\t\t\t\t-------------------------- Current Stock -----------------------\n")
+        print(f"{'\t\t\t\t\tID':<10}{'\t\tName':<20}{'\tQuantity':<10}{'\tPrice':<10}{'Category':<15}")
+        for product_id, details in stock.items():
+            print(f"\t\t\t\t\t{product_id:<10}\t{details['name']:<20}\t {details['quantity']:<10}\t{details['price']:<10.2f}\t{details['category']:<15}")
+        print("\t\t\t\t\t---------------------------------------------------------------\n")
+    elif choice == "2":
+        print("\nSelect Category:")
+        print("1. Cleanser")
+        print("2. Moisturizer")
+        print("3. Serum")
+        print("4. Sunscreen")
+        category_choice = input("Enter your choice: ").strip()
+        categories = {
+            "1": "Cleanser",
+            "2": "Moisturizer",
+            "3": "Serum",
+            "4": "Sunscreen"
+        }
+        category = categories.get(category_choice, None)
+        if not category:
+            print("Invalid category choice.")
+            return
+
+        print(f"\n\t\t\t\t\t-------------------------- Products in Category: {category} -----------------------")
+        print(f"{'\t\t\t\t\tID':<10}{'\t\tName':<20}{'\tQuantity':<10}{'\tPrice':<10}")
+        for product_id, details in stock.items():
+            if details["category"] == category:
+                print(f"\t\t\t\t\t{product_id:<10}\t{details['name']:<20}\t {details['quantity']:<10}\t{details['price']:<10.2f}")
+        print("\t\t\t\t\t-------------------------------------------------------------------------\n")
+    else:
+        print("Invalid choice. Please try again.")
+        
     # Function to searc for a product
 def search_product():
     product_id = input("Enter Product ID to search: ").strip()
@@ -108,6 +164,7 @@ def search_product():
     print(f"\t\t\t\t\tName: {details['name']}")
     print(f"\t\t\t\t\tQuantity: {details['quantity']}")
     print(f"\t\t\t\t\tPrice: {details['price']:.2f}")
+    print(f"\t\t\t\t\tCategory: {details['category']}")
     print("\t\t\t\t\t---------------------------------------------------------------\n")
 
 def main():
