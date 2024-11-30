@@ -59,9 +59,11 @@ def update_stock():
         print("Product ID not found.")
         return
 
-    print("\n--- Update Stock ---")
-    print("1. Add stock")
-    print("2. Reduce stock")
+    print("\n\t\t\t\t\t-------------------------- Update Stock -----------------------\n")
+    print("\t\t\t\t\t\t[1] Add Stock\t\t\t\t\t      ")
+    print("\t\t\t\t\t\t[2] Reduce Stock\t\t\t\t\t      \n")
+    print("\t\t\t\t\t---------------------------------------------------------------\n")
+
     choice = input("Enter your choice: ").strip()
 
     try:
@@ -89,34 +91,37 @@ def view_stock():
     if not stock:
         print("\nNo products in stock.")
         return
-    print("\n----------------- Current Stock -----------------")
-    print(f"{'ID':<10}{'Name':<20}{'Quantity':<10}{'Price':<10}")
+    print("\n\t\t\t\t\t-------------------------- Current Stock -----------------------\n")
+    print(f"{'\t\t\t\t\t ID':<10}{'\t\tName':<20}{'\tQuantity':<10}{'\tPrice':<10}")
     for product_id, details in stock.items():
-        print(f"{product_id:<10}{details['name']:<20}{details['quantity']:<10}{details['price']:<10.2f}")
-    print("-------------------------------------------------")
+        print(f"\t\t\t\t\t {product_id:<10}\t{details['name']:<20}\t {details['quantity']:<10}\t{details['price']:<10.2f}")
+    print("\t\t\t\t\t---------------------------------------------------------------")
     
-    # Function to search for a product
+    # Function to searc for a product
 def search_product():
     product_id = input("Enter Product ID to search: ").strip()
     if product_id not in stock:
         print("Product ID not found.")
         return
     details = stock[product_id]
-    print("\n--- Product Details ---")
-    print(f"Name: {details['name']}")
-    print(f"Quantity: {details['quantity']}")
-    print(f"Price: {details['price']:.2f}")
-    print("-----------------------")
+    print("\n\t\t\t\t\t-------------------------- Product Details -----------------------\n")
+    print(f"\t\t\t\t\tName: {details['name']}")
+    print(f"\t\t\t\t\tQuantity: {details['quantity']}")
+    print(f"\t\t\t\t\tPrice: {details['price']:.2f}")
+    print("\t\t\t\t\t---------------------------------------------------------------\n")
 
 def main():
     load_stock()
     while True:
-        print("\n\t\t\t\t\t\t\t--- Stock Management System ---")
-        print("\n\t\t\t\t\t\t\t\t---- WATSON ----")
-        print("\t\t\t\t\t[1] Add Product \t\t\t [2] Update Product")
-        print("\t\t\t\t\t[3] View all Product \t\t\t [4] Search Product")
-        print("\t\t\t\t\t[5] Exit")
-        choice = input("\t\t\t\t\tEnter your Choice: ").strip()
+        print("\n\t\t\t\t\t\t\t -------------------------")
+        print("\t\t\t\t\t\t\t| Stock Management System |")
+        print("\t\t\t\t\t\t\t -------------------------")
+        print("\n\t\t\t\t\t-------------------------- WATSON -----------------------------\n")
+        print("\t\t\t\t\t\t[1] Add Product \t\t[2] Update Product   ")
+        print("\t\t\t\t\t\t[3] View all Product \t\t[4] Search Product   ")
+        print("\t\t\t\t\t\t[5] Exit\t\t\t\t\t      \n")
+        print("\t\t\t\t\t---------------------------------------------------------------")
+        choice = input("\t\t\t\t\t\nEnter your Choice: ").strip()
         
         if choice == "1":
             add_product()
